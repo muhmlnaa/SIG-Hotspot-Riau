@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="Assetsbaru/logo-sidebar.png">
+  <title>SIG KARHUTLA RIAU - Data</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="js/select2/select2.min.css" rel="stylesheet">
+  <script src="js/chart/Chart.js"></script>
+</head>
+
+<style>
+  .sidebar {
+    background-color: #F0B60C;
+    width: 500px !important;
+  }
+
+  .logo-sidebar {
+    background-color: white;
+  }
+
+  .text {
+    margin-bottom: 0px;
+    color: black;
+  }
+
+  .text-white {
+    color: white;
+  }
+
+  .logo-brand {
+    margin-left: 2px;
+  }
+
+  .navbar-expand {
+    background-color: #F2CD5C;
+  }
+
+  .text-white {
+    color: white;
+  }
+</style>
+
+<body id="page-top">
+  <div id="wrapper">
+    <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center logo-sidebar" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img class="rounded-circle" src="Assetsbaru/logo-sidebar.png" width="70px" alt="...">
+        </div>
+        <div class="sidebar-brand-text text-left">
+          <p class="text">
+            SIG - Kelompok 9
+          </p>
+          <p class="text">
+            Karhutla Riau
+          </p>
+        </div>
+
+      </a>
+
+      <hr class="sidebar-divider my-0">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <img src="Assetsbaru/logo-dashboard.png" alt="">
+          <span class="text-white">Dashboard</span></a>
+      </li>
+
+      <hr class="sidebar-divider">
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="tampil_data.html">
+          <img src="Assetsbaru/logo-dataapi.png" alt="">
+          <span class="text-white">Data Titik Api</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="tambah_data.html">
+          <img src="Assetsbaru/logo-tambahdata.png" alt="">
+          <span class="text-white">Tambah Data</span></a>
+      </li>
+      <hr class="sidebar-divider">
+
+
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+
+    </ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <nav class="navbar navbar-expand topbar mb-4 static-top shadow">
+
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="text-white small ml-auto" id="clock2"></div>
+          <script type='text/javascript'>
+            var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+              'Oktober', 'November', 'Desember'
+            ];
+            var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth();
+            var thisDay = date.getDay(),
+              thisDay = myDays[thisDay];
+            var yy = date.getYear();
+            var year = (yy < 1000) ? yy + 1900 : yy;
+            document.getElementById('clock2').innerHTML = thisDay + ', ' + day + ' ' + months[month] + ' ' + year;
+            //-->
+          </script>
+          &nbsp; <div class="text-white">-</div> &nbsp;
+          <div class="text-white small" id="clock"></div>
+          <script type="text/javascript">
+            function showTime() {
+              var a_p = "";
+              var today = new Date();
+              var curr_hour = today.getHours();
+              var curr_minute = today.getMinutes();
+              var curr_second = today.getSeconds();
+              if (curr_hour < 12) {
+                a_p = "AM";
+              } else {
+                a_p = "PM";
+              }
+              if (curr_hour == 0) {
+                curr_hour = 12;
+              }
+              if (curr_hour > 12) {
+                curr_hour = curr_hour - 12;
+              }
+              curr_hour = checkTime(curr_hour);
+              curr_minute = checkTime(curr_minute);
+              curr_second = checkTime(curr_second);
+              document.getElementById('clock').innerHTML = curr_hour + ":" + curr_minute + ":" + curr_second + " " +
+              a_p;
+            }
+
+            function checkTime(i) {
+              if (i < 10) {
+                i = "0" + i;
+              }
+              return i;
+            }
+            setInterval(showTime, 500);
+          </script>
+          <ul class="navbar-nav">
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <li class="nav-item dropdown no-arrow ">
+              <a class="nav-link dropdown-toggle" href="../client/index.html" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-white small">ADMIN KELOMPOK 09</span>
+                <img class="img-profile rounded-circle" src="assetsbaru/undraw_profile.svg">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-white-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin ingin keluar ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Pilih "Logout" jika anda ingin keluar dan mengakhiri sesi anda.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container-fluid">
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Data Sebaran TItik Api Provinsi Riau</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>NO</th>
+                      <th>Kabupaten/Kota</th>
+                      <th>Ibukota</th>
+                      <th>Luas Wilayah</th>
+                      <th>Status</th>
+                      <th>Latitude</th>
+                      <th>Longitude</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td><b><a href=""> </a> </b></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <a href="edit_data.html" class="btn-sm btn-primary"><span class="fas fa-edit"></a>
+                        <a href="" class="btn-sm btn-danger"><span class="fas fa-trash"></a>
+                      </td>
+                    </tr>
+              </div>
+              </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy;<script>
+              document.write(new Date().getFullYear());
+            </script> All rights reserved || Sistem Informasi Geografis ITERA
+            by Kelompok 09 SIG</span>
+        </div>
+      </div>
+    </footer>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/jquery/choosen.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/select2/select2.full.min.js"></script>
+    <script>
+      $(function () {
+        $(".select2").select2();
+      });
+    </script>
+
+  </div>
